@@ -1,0 +1,175 @@
+<div class="list row">
+    <h4>User List</h4>         
+      <!-- <div class="col-md-8">
+          <div class="input-group mb-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search by name"
+                [(ngModel)]="name"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  (click)="searchByName()">
+                  Search
+                </button>
+              </div>
+          </div>
+      </div> -->
+      <div class="col-md-6" ngFor='let u of users'>     
+            <!-- <ul class="list-group">
+              <li
+                class="list-group-item"
+                *ngFor="let user of users; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="setCurrentUser(user, i)">
+              </li>
+            </ul> -->
+            <!-- <button class="m-4 btn btn-sm btn-primariy" >
+              Create
+            </button> -->
+           
+            <button class="m-4 btn btn-sm btn-danger" (click)="deleteAllUsers()">
+              Delete All
+            </button>
+            <button class="m-4 btn btn-sm btn-success" (click)="readUser()">
+              Load All
+            </button>
+        </div>
+      <table class="table" >
+          <thead>
+              <tr >
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Phone</th>
+                  <th>Company</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor='let u of users, let i = index' >
+                  <td>{{i+1}}</td>
+                  <td><span *ngIf = "idEdit != u.id else elseHiddenName ">{{u.name}}</span>
+                      <ng-template #elseHiddenName>
+                        <input  [value]="u.name | uppercase" [(ngModel)]="nameEdit"/>
+                      </ng-template>
+                   </td>
+                  <td><span *ngIf = "idEdit != u.id else elseHiddenUsername">{{u.username}}</span>
+                      <ng-template #elseHiddenUsername>
+                        <input [value]="u.username | uppercase" [(ngModel)]="usernameEdit">
+                      </ng-template>
+                  </td>
+                  <td><span *ngIf = "idEdit != u.id else elseHiddenEmail">{{u.email}}</span>
+                    <ng-template #elseHiddenEmail>
+                      <input [value]="u.email | uppercase" [(ngModel)]="emailEdit">
+                    </ng-template>
+                  </td>
+                  <td>
+                      <li><span *ngIf = "idEdit != u.id else elseHiddenStreet">{{u.address.street}}</span>
+                        <ng-template #elseHiddenStreet>
+                          <label>Street Edit: </label>
+                          <input [value]="u.address.street | uppercase" [(ngModel)]="addressEdit.streetEdit">
+                        </ng-template>
+                      </li>
+                      <li><span *ngIf = "idEdit != u.id else elseHiddenSuite">{{u.address.suite}}</span>
+                        <ng-template #elseHiddenSuite>
+                          <label>Suite Edit: </label>
+                          <input [value]="u.address.suite | uppercase" [(ngModel)]="addressEdit.suiteEdit">
+                        </ng-template>
+                      </li>
+                      <li><span *ngIf = "idEdit != u.id else elseHiddenCity">{{u.address.city}}</span>
+                        <ng-template #elseHiddenCity>
+                          <label>City Edit: </label>
+                          <input [value]="u.address.city | uppercase" [(ngModel)]="addressEdit.cityEdit">
+                        </ng-template>
+                      </li>
+                      <li><span *ngIf = "idEdit != u.id else elseHiddenZipcode">{{u.address.zipcode}}</span>
+                        <ng-template #elseHiddenZipcode>
+                          <label>Zipcode Edit: </label>
+                          <input [value]="u.address.zipcode | uppercase" [(ngModel)]="addressEdit.zipcodeEdit">
+                        </ng-template>
+                      </li>
+                  </td>
+                  <td><span *ngIf = "idEdit != u.id else elseHiddenPhone">{{u.phone}}</span>
+                      <ng-template #elseHiddenPhone>
+                        <input [value] = "u.phone | uppercase" [(ngModel)]="phoneEdit">
+                      </ng-template>
+                  </td>
+                  <td>
+                      <!-- <li>{{u.company.name}}</li>
+                      <li>{{u.company.catchPhrase}}</li>
+                      <li>{{u.company.bs}}</li> -->
+                  </td>
+                  <td>
+                      <div class='btn-action'>
+                          <button *ngIf ="idEdit != u.id else elseSave " (click)="editUser(u.id)">Edit</button>
+                            <ng-template #elseSave>
+                                <button (click)="save()"> save</button>
+                            </ng-template>
+                          <button (click)="deleteUser(u.id)">Delete</button>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- <button class="m-4 btn btn-sm btn-danger" (click)="deleteAllUsers()">
+        Delete All
+      </button> -->
+      <!-- <div class="col-md-8">
+        <div class="input-group mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by name"
+            [(ngModel)]="name"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              (click)="searchByName()">
+              Search
+            </button>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-6">
+        <h4>User List</h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let user of users; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setCurrentProduct(user, i)">
+          </li>
+        </ul>
+        <button class="m-4 btn btn-sm btn-danger" (click)="deleteAllUsers()">
+          Delete All
+        </button>
+      </div> -->
+      <!-- <div class="col-md-6">
+        <div *ngIf="currentProduct">
+          <h4>Product</h4>
+          <div>
+            <label><strong>Name:</strong></label> 
+          </div>
+          <div>
+            <label><strong>Description:</strong></label>
+          </div>
+          <div>
+            <label><strong>Status:</strong></label>
+          </div>
+          <a class="badge badge-warning" routerLink="/users/">
+            Edit
+          </a>
+        </div> -->
+        <!-- <div *ngIf="!currentUser">
+          <br />
+          <p>Please click on a product</p>
+        </div> -->
+    </div>

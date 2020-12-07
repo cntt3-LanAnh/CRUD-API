@@ -1,0 +1,116 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+       
+  
+        <div class="form-group">
+          <label for="description"> Name</label>
+          <input
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="nameAdd"
+            name="description"
+          />
+        </div>
+        
+        <div class="form-group">
+            <label for="description"> User Name</label>
+            <input
+              class="form-control"
+              id="username"
+              required
+              [(ngModel)]="usernameAdd"
+              name="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" class="form-control" name="email" id="email" 
+             required
+             [(ngModel)]="emailAdd">
+           </div>
+           <div class="form-group">
+            <label > Address :<br>
+                <label >Street </label>
+                <input
+              class="form-control"
+              id="street"
+              required
+              [(ngModel)]="addressAdd.streetAdd"
+              name="street"
+            />
+            <!-- inerpu -->
+            <label >Suite</label>
+            <input
+              class="form-control"
+              id="suite"
+              required
+              [(ngModel)]="addressAdd.suiteAdd"
+              name="suite"
+            />
+            <label > City</label>
+            <input
+              class="form-control"
+              id="city"
+              required
+              [(ngModel)]="addressAdd.cityAdd"
+              name="city"
+            />
+            <label >Zipcode</label>
+            <input
+              class="form-control"
+              id="zipcode"
+              required
+              [(ngModel)]="addressAdd.zipcodeAdd"
+              name="zipcode"
+            />
+            <label >Geo <br>
+                <label >Lat</label>
+                <input
+              class="form-control"
+              id="lat"
+              required
+              [(ngModel)]="addressAdd.geoAdd.latAdd"
+              name="lat"
+            />
+            <label > Lng</label>
+            <input
+              class="form-control"
+              id="lng"
+              required
+              [(ngModel)]="addressAdd.geoAdd.lngAdd"
+              name="lng"
+            />
+            </label>
+           </label>
+
+            
+          </div>
+          <div class="form-group">
+            <label for="phone"> Phone</label>
+            <input
+              class="form-control"
+              id="phone"
+              required
+              [(ngModel)]="phoneAdd"
+              name="phone"
+            />
+          </div>
+          <div class="form-group">
+            <label for="website">Website </label>
+            <input
+              class="form-control"
+              id="website"
+              required
+              [(ngModel)]="websiteAdd"
+              name="website"
+            />
+          </div>
+        
+  
+        <button (click)="saveAdd()" class="btn btn-success">Add</button>
+      </div>
+  
+     
+    
+  </div>
